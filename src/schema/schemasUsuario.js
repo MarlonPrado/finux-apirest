@@ -1,33 +1,32 @@
 const Joi = require('joi');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phone = require('phone');
 
 const schemasUsuario = Joi.object({
   nombre: Joi.string()
     .min(1)
-    .max(50)
-    .regex(/^[A-Za-z\s]+$/)
+    .max(112)
+    .pattern(/^[A-Za-záéíóúÁÉÍÓÚ\s]+$/)
     .required()
     .messages({
       'string.base': 'El nombre debe ser una cadena de caracteres.',
       'string.empty': 'El nombre no puede estar vacío.',
       'string.min': 'El nombre debe tener al menos 1 carácter.',
       'string.max': 'El nombre debe tener como máximo 112 caracteres.',
-      'string.pattern.base': 'El nombre solo puede contener letras y espacios.',
+      'string.pattern.base': 'El nombre solo puede contener letras y espacios con tildes.',
       'any.required': 'El nombre es un campo obligatorio.'
     }),
 
   apellido: Joi.string()
     .min(1)
-    .max(50)
-    .regex(/^[A-Za-z\s]+$/)
+    .max(112)
+    .pattern(/^[A-Za-záéíóúÁÉÍÓÚ\s]+$/)
     .required()
     .messages({
       'string.base': 'El apellido debe ser una cadena de caracteres.',
       'string.empty': 'El apellido no puede estar vacío.',
       'string.min': 'El apellido debe tener al menos 1 carácter.',
       'string.max': 'El apellido debe tener como máximo 112 caracteres.',
-      'string.pattern.base': 'El apellido solo puede contener letras y espacios.',
+      'string.pattern.base': 'El apellido solo puede contener letras y espacios con tildes.',
       'any.required': 'El apellido es un campo obligatorio.'
     }),
 
@@ -69,7 +68,7 @@ const schemasUsuario = Joi.object({
     }),
 
   rol: Joi.number()
-    .valid(0, 1, 2, 3)
+    .valid(0, 1, 2, 3,70)
     .required()
     .messages({
       'number.base': 'El rol debe ser un número.',
