@@ -16,6 +16,10 @@ require('dotenv').config();
 // Intializations
 const app = express();
 
+
+global.token = null;
+
+
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', engine({
     defaultLayout: 'main',
@@ -64,7 +68,7 @@ app.use((req,res,next) => {
 });
 
 
-//Rutas
+//Rutas Y CONTROLADORES DEL BACKEND
 app.use(require('./routes/homepage/acceso'));
 
 
@@ -84,7 +88,7 @@ const options = {
       }
     ]
   },
-  apis: [`${__dirname}/routes/homepage/*js`]
+  apis: [`${__dirname}/routes/homepage/Documentation.js`]
 };
 
 const specs = swaggerJsDoc(options);
